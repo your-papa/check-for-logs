@@ -5,7 +5,7 @@ import { check } from './check'
 
 export async function run(): Promise<void> {
   try {
-    const token = core.getInput('token')
+    const token = core.getInput('repo-token')
     const logPositions = findConsoleLogs('./src')
     const output = await check(token, logPositions)
     core.setOutput('logs', output)

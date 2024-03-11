@@ -10,7 +10,6 @@ inputs:
   repo-token:
     description: 'Token for the repo'
     required: true
-    default: ${{ github.token }}
 outputs:
   foundLogs:
     description: 'console.logs and where they are found'
