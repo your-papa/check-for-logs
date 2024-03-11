@@ -1,8 +1,15 @@
 import * as core from '@actions/core'
 
+import { findConsoleLogs } from './logs'
+import { check } from './check'
+
 export async function run(): Promise<void> {
   try {
-    core.setOutput('log position', 'console.log at main.ts')
+    const token = core.getInput('token')
+    const logPositions = findConsoleLogs('./src')
+    const output = await check(token, logPositions)
+    core.setOutput('logs', output)
+    //@ts-ignore
   } catch (error: any) {
     core.setFailed(error.message)
   }
