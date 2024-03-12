@@ -33,5 +33,5 @@ export async function check(
     throw new Error(`Failed to create check: ${check.status}`)
   }
   core.info(`Check created: ${check.data.html_url}`)
-  return check.data.html_url
+  return check
 }
