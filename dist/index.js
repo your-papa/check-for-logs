@@ -29117,7 +29117,7 @@ const logs_1 = __nccwpck_require__(4718);
 const check_1 = __nccwpck_require__(682);
 async function run() {
     try {
-        const token = core.getInput('token');
+        const token = core.getInput('repo-token');
         const logPositions = (0, logs_1.findConsoleLogs)('./src');
         const output = await (0, check_1.check)(token, logPositions);
         core.setOutput('logs', output);
