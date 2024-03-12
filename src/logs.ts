@@ -23,7 +23,7 @@ export function findConsoleLogs(dirPath: string): LogPosition[] {
       } else if (stats.isFile() && /\.(ts|svelte)$/.test(fullPath)) {
         const fileContents = fs.readFileSync(fullPath, 'utf-8')
         fileContents.split('\n').forEach((line, index) => {
-          if (line.includes('console.log')) {
+          if (line.includes('console.log(')) {
             logPositions.push({ file: fullPath, line: index + 1 })
           }
         })

@@ -32,6 +32,8 @@ export async function check(
   if (check.status !== 201) {
     throw new Error(`Failed to create check: ${check.status}`)
   }
+  core.info(`Repo: ${github.context.repo}`)
+  core.info(`Check created: ${check.data}`)
   core.info(`Check created: ${check.data.html_url}`)
   return check
 }

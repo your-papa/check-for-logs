@@ -29033,6 +29033,8 @@ async function check(repoToken, logs) {
     if (check.status !== 201) {
         throw new Error(`Failed to create check: ${check.status}`);
     }
+    core.info(`Repo: ${github.context.repo}`);
+    core.info(`Check created: ${check.data}`);
     core.info(`Check created: ${check.data.html_url}`);
     return check;
 }
@@ -29068,7 +29070,7 @@ function findConsoleLogs(dirPath) {
             else if (stats.isFile() && /\.(ts|svelte)$/.test(fullPath)) {
                 const fileContents = fs_1.default.readFileSync(fullPath, 'utf-8');
                 fileContents.split('\n').forEach((line, index) => {
-                    if (line.includes('console.log')) {
+                    if (line.includes('console.log(')) {
                         logPositions.push({ file: fullPath, line: index + 1 });
                     }
                 });
